@@ -1,21 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Super santiago - tienda online</title>
 </head>
+
 <body>
     <header>
 
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <img src="./img/logo-super.png" alt="logo supermercado">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
     </header>
     <main>
+        <h1 class="titulo">TIENDA ONLINE</h1>
+        <div class="d-flex justify-content-center">
+            <div class="card productos align-items-center">
+                <img class="logo" src="./img/aceiteCocinero.jpg" class="card-img-top" alt="aceite cocinero">
+                <div class="productos-cuerpo text-center">
+                    <h2 class="productos-nombre">Aceite Cocinero x900</h2>
+                    <p class="productos-precio">$420</p>
+                    <a href="#" class="btn btn-primary">Comprar</a>
+                </div>
+            </div>
+            <div class="card productos align-items-center">
+                <img src="./img/arvejaVigente.jpg" class="card-img-top" alt="arveja vigente">
+                <div class="productos-cuerpo text-center">
+                    <h2 class="productos-nombre">Arveja vigente</h2>
+                    <p class="productos-precio">$53</p>
+                    <a href="#" class="btn btn-primary">Comprar</a>
+                </div>
+            </div>
+            <div class="card productos align-items-center">
+                <img src="./img/brahma.jpg" class="card-img-top" alt="cerveza brahma">
+                <div class="productos-cuerpo text-center">
+                    <h2 class="productos-nombre">Cerveza Brahma</h2>
+                    <p class="productos-precio">$370</p>
+                    <a href="#" class="btn btn-primary">Comprar</a>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="card productos align-items-center">
+                <img src="./img/duraznoVigente.jpg" class="card-img-top" alt="durazno vigente">
+                <div class="productos-cuerpo text-center">
+                    <h2 class="productos-nombre">Durazno Vigente</h2>
+                    <p class="productos-precio">$350</p>
+                    <a href="#" class="btn btn-primary">Comprar</a>
+                </div>
+            </div>
+            <div class="card productos align-items-center">
+                <img src="./img/gaseosaCoca.jpg" class="card-img-top" alt="gaseosa CocaCola">
+                <div class="productos-cuerpo text-center">
+                    <h2 class="productos-nombre">Coca Cola</h2>
+                    <p class="productos-precio">$390</p>
+                    <a href="#" class="btn btn-primary">Comprar</a>
+                </div>
+            </div>
+            <div class="card productos align-items-center">
+                <img src="./img/yerbaPlayadito.jpg" class="card-img-top" alt="Yerba playadito">
+                <div class="productos-cuerpo text-center">
+                    <h2 class="productos-nombre">Yerba Playadito</h2>
+                    <p class="productos-precio">$360</p>
+                    <a href="#" class="btn btn-primary">Comprar</a>
+                </div>
+            </div>
+        </div>
 
     </main>
     <footer>
+        <div class="row align-items-center">
+            <img class="logo" src="./img/logo-super.png" alt="logo supermercado">
+            <div class="col">
+                <h3>SUCURSALES</h3>
+                <ul>
+                    <li>Rouillon 2371</li>
+                    <li>Segui 2371</li>
+                </ul>
+            </div>
+            <div class="col justify-content-center">
+                <h3>HORARIO</h3>
+                <p>Lunes a Sabados</p>
+                <p>8:30 a 12:45 - 16:30 a 20:00</p>
+                <p>Domingos</p>
+                <p>8:45 a 12:45</p>
+            </div>
+        </div>
 
     </footer>
-    <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="./script/main.js"></script>
+
 </body>
+
 </html>

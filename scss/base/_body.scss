@@ -1,0 +1,15 @@
+header{
+    background-color: $c-header;
+    padding: 5px;
+}
+main{
+    background-color: $c-body;
+}
+footer{
+    background-color: $c-footer;
+    color: $color-secundario;
+    padding: 10px;
+    h3{
+        text-decoration: underline;
+    }
+}

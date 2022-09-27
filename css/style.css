@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Dosis", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0);
+}
+a:hover {
+  color: rgba(0, 0, 0, 0);
+}
+
+p {
+  text-align: justify;
+}
+
+header {
+  background-color: #E6EBF2;
+  padding: 5px;
+}
+
+main {
+  background-color: #F2F2F2;
+}
+
+footer {
+  background-color: #000B52;
+  color: white;
+  padding: 10px;
+}
+footer h3 {
+  text-decoration: underline;
+}
+
+.logo {
+  width: 150px;
+  height: 120px;
+}
+
+.productos {
+  width: 250px;
+  margin: 10px;
+}
+.productos img {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  object-fit: cover;
+}
+.productos-cuerpo {
+  margin-bottom: 10px;
+}
+.productos-nombre {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.productos-precio {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.titulo {
+  text-align: center;
+  margin: 0;
+  padding-top: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */
