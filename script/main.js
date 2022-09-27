@@ -59,12 +59,16 @@ function realizarCompra() {
     let compra = prompt(`Hola ${nombreCliente}!¿Desea realizar una compra? (si/no)`).toLowerCase();
     while (compra !== "no" && compra !== "si") {
         alert("Por favor ingrese una opcion valida");
-        compra = prompt("¿Desea realizar una compra? (si/no)");
+        compra = prompt("¿Desea realizar una compra? (si/no)").toLowerCase();
     }
     if (compra == "si") {
         while (compra == "si") {
             compraProductos();
             compra = prompt("desea comprar otro producto?").toLowerCase();
+            while (compra !== "no" && compra !== "si") {
+                alert("Por favor ingrese una opcion valida");
+                compra = prompt("desea comprar otro producto?").toLowerCase();
+            }
             if (compra == "no") {
                 alert(`Muchas gracias por su compra! El total de su pedido es $${subtotal} y lleva ${cantidadProductos1} unidades`);
             }
