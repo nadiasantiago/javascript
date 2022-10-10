@@ -33,36 +33,74 @@ main {
 footer {
   background-color: #000B52;
   color: white;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+footer figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+@media (min-width: 760px) {
+  footer figure {
+    justify-content: start;
+  }
+}
+footer .sucursales, footer .horario {
+  padding: 15px;
 }
 footer h3 {
   text-decoration: underline;
 }
+footer p {
+  margin: 0;
+}
+@media (min-width: 760px) {
+  footer {
+    display: grid;
+    grid-template-columns: 3fr 2fr 2fr;
+  }
+}
 
 .logo {
-  padding: 20px;
+  width: 200px;
+  padding: 15px;
 }
 
-.productos {
-  width: 250px;
-  margin: 10px;
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-.productos img {
+.contenedor-productos {
   width: 200px;
-  height: 200px;
   padding: 10px;
-  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.productos-cuerpo {
-  margin-bottom: 10px;
+.contenedor-productos img {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 20px;
 }
-.productos-nombre {
-  font-size: 1.2rem;
-  font-weight: bold;
+.contenedor-productos img:hover {
+  transform: scale(1.02);
+  transition: all 1s;
 }
-.productos-precio {
-  font-size: 1rem;
+.contenedor-productos-descripcion {
+  padding: 5px;
+  height: 50px;
+}
+.contenedor-productos-descripcion h2, .contenedor-productos-descripcion p {
   text-align: center;
+  margin: 0;
+}
+.contenedor-productos-descripcion h2 {
+  font-size: 1.1rem;
 }
 
 .titulo {
