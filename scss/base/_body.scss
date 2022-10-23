@@ -1,12 +1,35 @@
 header{
     background-color: $c-header;
     padding: 5px;
+    .btn-cart{
+        display: flex;
+        justify-content: flex-end;
+        .bi-cart-fill{
+            position: relative;
+            font-size: 2rem;
+            margin-right: 3em;
+            background-color: $c-amarillo;
+            color: $c-azul;
+            padding: 0.3em 0.5em;
+        }
+        .cart-quantity{
+            color: white;
+            background-color: $c-rojo;
+            padding: .1em 0.2em;
+            position: absolute;
+            margin-right: 7em;
+            right: 0;
+            border: solid 2px $c-rojo;
+            border-radius: 50%;
+            font-weight: bolder;
+        }
+    }
 }
 main{
     background-color: $c-body;
 }
 footer{
-    background-color: $c-footer;
+    background-color: $c-azul;
     color: $color-secundario;
     display: flex;
     flex-direction: column;

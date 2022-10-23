@@ -25,6 +25,29 @@ header {
   background-color: #E6EBF2;
   padding: 5px;
 }
+header .btn-cart {
+  display: flex;
+  justify-content: flex-end;
+}
+header .btn-cart .bi-cart-fill {
+  position: relative;
+  font-size: 2rem;
+  margin-right: 3em;
+  background-color: #ffdc16;
+  color: #000B52;
+  padding: 0.3em 0.5em;
+}
+header .btn-cart .cart-quantity {
+  color: white;
+  background-color: red;
+  padding: 0.1em 0.2em;
+  position: absolute;
+  margin-right: 7em;
+  right: 0;
+  border: solid 2px red;
+  border-radius: 50%;
+  font-weight: bolder;
+}
 
 main {
   background-color: #F2F2F2;
@@ -61,6 +84,103 @@ footer p {
     display: grid;
     grid-template-columns: 3fr 2fr 2fr;
   }
+}
+
+.cart-modal {
+  height: 100vh;
+  width: 30%;
+  background-color: #dad8d8;
+  float: right;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.cart-modal-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  z-index: 2;
+  transform: translateY(-100%);
+  transition: 0.5s ease-out;
+}
+.cart-modal-overlay.open {
+  transform: translateY(35%);
+}
+.cart-modal #close-btn {
+  font-size: 2rem;
+  float: right;
+  margin: 0.7em 1.5em 0 0;
+  color: white;
+  cursor: pointer;
+}
+
+.total {
+  margin: 2em 0 2em 0;
+  text-align: center;
+}
+.total-cart {
+  color: #000B52;
+}
+.total-price {
+  color: #ffdc16;
+  font-size: 2rem;
+  display: block;
+}
+
+#close-btn {
+  font-size: 1.5rem;
+  float: right;
+  margin: 0.5em 2em 0 0;
+  color: white;
+  cursor: pointer;
+}
+
+.cart-is-empty {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+  display: none;
+}
+
+.product-row {
+  margin-top: 2em;
+  display: flex;
+  align-items: center;
+}
+
+.cart-image {
+  width: 5em;
+  object-fit: contain;
+  padding: 0.5em;
+}
+
+.cart-product {
+  width: 4em;
+}
+
+#btn-remove {
+  cursor: pointer;
+  padding: 0.3em;
+  color: red;
+  border: 0;
+  background: 0;
+}
+
+.cart-price {
+  width: 3em;
+}
+
+.product-quantity {
+  width: 4em;
+}
+
+.btn-carrito {
+  background-color: #000B52;
+  border-color: #000B52;
+  border-radius: 10px;
+  color: white;
+  padding: 0.3em;
+  margin: 0.5em;
 }
 
 .logo {
@@ -101,6 +221,13 @@ footer p {
 }
 .contenedor-productos-descripcion h2 {
   font-size: 1.1rem;
+}
+.contenedor-productos .add-to-cart {
+  background-color: #000B52;
+  border-color: #000B52;
+  border-radius: 10px;
+  color: white;
+  padding: 0.3em;
 }
 
 .titulo {
