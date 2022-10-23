@@ -56,9 +56,6 @@ botonesComprar.forEach(boton => {
     boton.addEventListener("click", agregarCarrito);
 });
 
-
-
-
 function agregarCarrito(e){
     boton = e.target;
     let contenedorPadre = boton.parentElement;
@@ -83,6 +80,10 @@ function popularCarrito(){
         `
     });
     actualizarTotal();
+    const removeElement = document.querySelectorAll("#btn-remove");
+    removeElement.forEach(boton => {
+        boton.addEventListener("click", quitarElemento);
+    });
 }
 
 function actualizarTotal(){
@@ -96,20 +97,16 @@ function actualizarCantidadCarrito (){
     totalProducto.textContent = carrito.length;
 }
 
-const removeElement = document.querySelectorAll("#btn-remove");
-removeElement.forEach(boton => {
-    boton.addEventListener("click", quitarElemento);
-});
+
 
 function quitarElemento(e){
     boton = e.target;
-    console.log("hola")
-    // let contenedorPadre = boton.parentElement;
-    // let prodID = contenedorPadre.getAttribute("id");
-    // let indice = carrito.indexOf(prodID);
-    // carrito.splice(indice,1);
-    // popularCarrito();
-    // actualizarCantidadCarrito();
+    let contenedorPadre = boton.parentElement;
+    let prodID = contenedorPadre.getAttribute("id");
+    let indice = carrito.indexOf(prodID);
+    carrito.splice(indice,1);
+    popularCarrito();
+    actualizarCantidadCarrito();
 }
 //para borrar un producto usar splice
 
