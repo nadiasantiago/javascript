@@ -1,0 +1,90 @@
+.cart-modal{
+    height: 100vh;
+    width: 30%;
+    background-color: #dad8d8;
+    float: right;
+    overflow: scroll;
+    overflow-x: hidden;
+    &-overlay {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        z-index: 2;
+        transform: translateY(-100%);
+        transition: .5s ease-out;
+        &.open {
+            transform: translateY(35%);
+        }
+    }
+    #close-btn{
+        font-size: 2rem;
+        float: right;
+        margin: 0.7em 1.5em 0 0;
+        color: white;
+        cursor: pointer;
+    }
+}
+.total{
+    margin: 2em 0 2em 0;
+    text-align: center;
+    &-cart{
+        color: $c-azul;
+    }
+    &-price{
+        color: $c-amarillo;
+        font-size: 2rem;
+        display: block;
+    }
+    
+    
+}
+#close-btn {
+    font-size: 1.5rem;
+    float: right;
+    margin: .5em 2em 0 0;
+    color: white;
+    cursor: pointer;
+}
+.cart-is-empty {
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+    display: none;
+    
+}
+.product-row{
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+}
+.cart-image{
+    width: 5em;
+    object-fit: contain;
+    padding: 0.5em;
+}
+.cart-product{
+    width: 4em
+}
+#btn-remove{
+    cursor: pointer;
+    padding: 0.3em;
+    color: $c-rojo;
+    border: 0;
+    background: 0;
+}
+.cart-price{
+    width: 3em;
+}
+.product-quantity{
+    width: 4em;
+}
+
+.btn-carrito {
+    background-color: $c-azul;
+    border-color: $c-azul;
+    border-radius: 10px;
+    color: white;
+    padding: 0.3em;
+    margin: 0.5em;
+}
