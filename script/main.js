@@ -23,6 +23,13 @@ const contenedorProductos = document.querySelector(".contenedor");
 let listaProductos = [aceite,yerba,arveja,durazno,gaseosa,cerveza];
 let carrito = [];
 
+document.addEventListener('DOMContentLoaded', ()=>{
+    if(localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'));
+        popularCarrito();
+    }
+})
+
 listaProductos.forEach(producto =>{
     contenedorProductos.innerHTML +=`
         <div class="contenedor-productos" id="${producto.id}">
@@ -43,6 +50,7 @@ const cerrarCarrito = document.querySelector("#close-btn");
 const contenedorCarrito = document.querySelector(".product-rows");
 const totalCarrito = document.querySelector(".total-price");
 const totalProducto = document.querySelector(".cart-quantity");
+const btnVaciarCarrito = document.querySelector(".vaciar-carrito");
 
 btnCarrito.addEventListener("click",()=>{
     ventanaCarrito.classList.add("open");
@@ -56,14 +64,23 @@ botonesComprar.forEach(boton => {
     boton.addEventListener("click", agregarCarrito);
 });
 
+btnVaciarCarrito.addEventListener("click", vaciarCarrito);
+
 function agregarCarrito(e){
     boton = e.target;
     let contenedorPadre = boton.parentElement;
     let prodID = contenedorPadre.getAttribute("id");
     const prodCarrito = listaProductos.find(elemento => elemento.id == prodID);
-    carrito.push(prodCarrito);
+    const repeat = carrito.some(elemento=>elemento.id == prodID)
+    if (repeat){
+        prodCarrito.cantidad ++;
+        prodCarrito.stock -= prodCarrito.cantidad
+    }else{
+        prodCarrito.cantidad ++;
+        prodCarrito.stock -= prodCarrito.cantidad
+        carrito.push(prodCarrito);
+    }
     popularCarrito();
-    actualizarCantidadCarrito();
 }
 
 function popularCarrito(){
@@ -74,21 +91,30 @@ function popularCarrito(){
                 <img src='${producto.img}' class='cart-image' />
                 <span class='cart-product'>${producto.nombre}</span>
                 <span class='cart-price'>$${producto.precio}</span>
-                <input type='number' value='1' class="product-quantity" />
-                <button id="btn-remove"><i class="bi bi-trash3"></i></button>
+                <input type='number' value=${producto.cantidad} class="product-quantity" />
+                <span class='cart-price'>$${producto.precio * producto.cantidad}</span>
+                <button class="btn-remove bi bi-trash3"></button>
             </div>
         `
+        localStorage.setItem('carrito', JSON.stringify(carrito));
     });
     actualizarTotal();
-    const removeElement = document.querySelectorAll("#btn-remove");
+    actualizarCantidadCarrito();
+    const removeElement = document.querySelectorAll(".btn-remove");
     removeElement.forEach(boton => {
         boton.addEventListener("click", quitarElemento);
     });
+    const cantidadProducto = document.querySelectorAll(".product-quantity");
+    cantidadProducto.forEach(boton =>{
+        boton.addEventListener("change", updateValue);
+    })
+    
 }
+
 
 function actualizarTotal(){
     let total = carrito.reduce((acc, producto)=>{ 
-        return acc + producto.precio 
+        return acc + ((producto.precio)*(producto.cantidad))
     },0)
     totalCarrito.innerHTML = `$${total}`
 }
@@ -97,18 +123,29 @@ function actualizarCantidadCarrito (){
     totalProducto.textContent = carrito.length;
 }
 
-
-
 function quitarElemento(e){
     boton = e.target;
     let contenedorPadre = boton.parentElement;
     let prodID = contenedorPadre.getAttribute("id");
-    let indice = carrito.indexOf(prodID);
+    const prodCarrito = carrito.find(elemento => elemento.id == prodID);
+    let indice = carrito.indexOf(prodCarrito);
     carrito.splice(indice,1);
     popularCarrito();
-    actualizarCantidadCarrito();
 }
-//para borrar un producto usar splice
+
+function vaciarCarrito(){
+    carrito = [];
+    popularCarrito();
+}
+
+function updateValue(e){
+    boton = e.target;
+    let contenedorPadre = boton.parentElement;
+    let prodID = contenedorPadre.getAttribute("id");
+    const prodCarrito = carrito.find(elemento => elemento.id == prodID);
+    prodCarrito.textContent = e.target.value;
+    console.log(prodCarrito.cantidad);
+}
 
 
 

@@ -1,6 +1,6 @@
 .cart-modal{
     height: 100vh;
-    width: 40%;
+    width: 23em;
     background-color: #dad8d8;
     float: right;
     overflow: scroll;
@@ -54,7 +54,7 @@
     
 }
 .product-row{
-    margin-top: 2em;
+    margin-top: 0.3em;
     display: flex;
     align-items: center;
 }
@@ -64,9 +64,9 @@
     padding: 0.5em;
 }
 .cart-product{
-    width: 4em
+    width: 5em
 }
-#btn-remove{
+.btn-remove{
     cursor: pointer;
     padding: 0.3em;
     color: $c-rojo;
@@ -75,9 +75,10 @@
 }
 .cart-price{
     width: 3em;
+    padding: 0.3em;
 }
 .product-quantity{
-    width: 4em;
+    width: 3em;
 }
 
 .purchase-btn {
@@ -90,4 +91,7 @@
 }
 .vaciar-carrito{
     @extend .purchase-btn;
+}
+.lista-carrito{
+    margin-top: 5em;
 }
