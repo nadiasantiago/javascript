@@ -241,4 +241,12 @@ footer p {
   padding-top: 10px;
 }
 
+.contacto_info {
+  width: 320px;
+  margin: 0.3em;
+}
+.contacto_info_texto {
+  height: 5em;
+}
+
 /*# sourceMappingURL=style.css.map */

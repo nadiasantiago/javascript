@@ -64,7 +64,7 @@ botonesComprar.forEach(boton => {
     boton.addEventListener("click", agregarCarrito);
 });
 
-btnVaciarCarrito.addEventListener("click", vaciarCarrito);
+btnVaciarCarrito.addEventListener("click",vaciarCarrito);
 
 function agregarCarrito(e){
     boton = e.target;
@@ -74,11 +74,12 @@ function agregarCarrito(e){
     const repeat = carrito.some(elemento=>elemento.id == prodID)
     if (repeat){
         prodCarrito.cantidad ++;
-        prodCarrito.stock -= prodCarrito.cantidad
+        // prodCarrito.stock -= prodCarrito.cantidad
     }else{
-        prodCarrito.cantidad ++;
-        prodCarrito.stock -= prodCarrito.cantidad
         carrito.push(prodCarrito);
+        prodCarrito.cantidad ++;
+        // prodCarrito.stock -= prodCarrito.cantidad
+        
     }
     popularCarrito();
 }
@@ -96,19 +97,18 @@ function popularCarrito(){
                 <button class="btn-remove bi bi-trash3"></button>
             </div>
         `
-        localStorage.setItem('carrito', JSON.stringify(carrito));
     });
+    // const cantidadProducto = document.querySelectorAll(".product-quantity");
+    // cantidadProducto.forEach(boton =>{
+    // boton.addEventListener("change", updateValue);
+    // })
     actualizarTotal();
     actualizarCantidadCarrito();
     const removeElement = document.querySelectorAll(".btn-remove");
     removeElement.forEach(boton => {
         boton.addEventListener("click", quitarElemento);
     });
-    const cantidadProducto = document.querySelectorAll(".product-quantity");
-    cantidadProducto.forEach(boton =>{
-        boton.addEventListener("change", updateValue);
-    })
-    
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
 
@@ -130,22 +130,24 @@ function quitarElemento(e){
     const prodCarrito = carrito.find(elemento => elemento.id == prodID);
     let indice = carrito.indexOf(prodCarrito);
     carrito.splice(indice,1);
+    prodCarrito.cantidad = 0;
     popularCarrito();
 }
 
 function vaciarCarrito(){
     carrito = [];
+    listaProductos.forEach(producto=>producto.cantidad = 0);
     popularCarrito();
 }
 
-function updateValue(e){
-    boton = e.target;
-    let contenedorPadre = boton.parentElement;
-    let prodID = contenedorPadre.getAttribute("id");
-    const prodCarrito = carrito.find(elemento => elemento.id == prodID);
-    prodCarrito.textContent = e.target.value;
-    console.log(prodCarrito.cantidad);
-}
+// function updateValue(e){
+//     boton = e.target;
+//     let contenedorPadre = boton.parentElement;
+//     let prodID = contenedorPadre.getAttribute("id");
+//     const prodCarrito = carrito.find(elemento => elemento.id == prodID);
+//     parseFloat(prodCarrito.cantidad = e.target.value);
+//     console.log(prodCarrito);
+// }
 
 
 
