@@ -286,9 +286,33 @@ footer p {
   bottom: 0;
   left: 0;
 }
+.contacto_info.success input {
+  border-color: #119b4a;
+}
+.contacto_info.success i.bi-check-circle-fill {
+  color: #119b4a;
+  visibility: visible;
+}
+.contacto_info.error input {
+  border-color: #b92c1d;
+}
+.contacto_info.error i.bi-exclamation-circle-fill {
+  color: #b92c1d;
+  visibility: visible;
+}
+.contacto_info.error small {
+  color: #b92c1d;
+  visibility: visible;
+}
 
 .form button {
   background-color: #000B52;
+  border: 2px solid #000B52;
+  color: #fff;
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -42,12 +42,41 @@
         bottom: 0;
         left: 0;
     }
+    &.success {
+        input{
+        border-color: #119b4a;
+        }
+        i.bi-check-circle-fill{
+            color: #119b4a;
+            visibility: visible;
+        }
+    }
+    &.error{
+        input{
+        border-color: #b92c1d;
+        }
+        i.bi-exclamation-circle-fill{
+            color: #b92c1d;
+            visibility: visible;
+        }
+        small{
+            color: #b92c1d;
+            visibility: visible;
+        }
+    }
 }
 .form{
     button{
         background-color: $c-azul;
+        border: 2px solid $c-azul;
+        color: #fff;
+        display: block;
+        padding: 5px;
+        margin: 5px;
+        width: 100%;
     }
 }
+
 
 
 
