@@ -147,7 +147,9 @@ function updateValue(e){
     let contenedorPadre = boton.parentElement;
     let prodID = contenedorPadre.getAttribute("id");
     const prodCarrito = carrito.find(elemento => elemento.id == prodID);
+    const prodLista = listaProductos.find(elemento => elemento.id == prodID)
     prodCarrito.cantidad = parseFloat(boton.value);
+    prodLista.cantidad = prodCarrito.cantidad;
     popularCarrito();
 }
 
