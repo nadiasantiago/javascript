@@ -1,4 +1,3 @@
-const form = document.querySelector("#form");
 const nombre = document.querySelector("#nombre");
 const apellido = document.querySelector("#apellido");
 const email = document.querySelector("#email");
@@ -8,17 +7,7 @@ const observaciones = document.querySelector("#floatingTextarea")
 const btnComprar = document.querySelector("#btn-comprar")
 const datosEnvio = []
 
-document.addEventListener('DOMContentLoaded', ()=>{
-    if(localStorage.getItem('datosEnvio')){
-        carrito = JSON.parse(localStorage.getItem('datosEnvio'));
-        enviarDatos();
-    }
-})
-form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    checkInputs();
-})
-btnComprar.addEventListener("click", enviarDatos);
+btnComprar.addEventListener("click", checkInputs);
 
 function checkInputs(){
     const nombreValue = nombre.value.trim();
@@ -55,9 +44,14 @@ function checkInputs(){
     } else{
         successFor(direccion);
     }
+    console.log(nombreValue);
+    console.log(apellidoValue);
 }
 
 function errorFor(input, mensaje){
+    form.addEventListener("submit", (e)=>{
+        e.preventDefault();
+    })
     const formControl = input.parentElement;
     const small = formControl.querySelector("small");
     
@@ -69,16 +63,3 @@ function successFor(input){
     const formControl = input.parentElement;
     formControl.className = "contacto_info success";
 }
-
-function enviarDatos(){
-    const nombreValue = nombre.value
-    const apellidoValue = apellido.value
-    const emailValue = email.value
-    const telValue = tel.value
-    const direccionValue = direccion.value
-    const observacionesValue = observaciones.value
-    
-    datosEnvio.push(nombreValue,apellidoValue,emailValue,telValue,direccionValue,observacionesValue)
-    localStorage.setItem('DatosEnvio', JSON.stringify(datosEnvio));
-}
-
