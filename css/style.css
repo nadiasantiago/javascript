@@ -241,12 +241,54 @@ footer p {
   padding-top: 10px;
 }
 
-.contacto_info {
-  width: 320px;
-  margin: 0.3em;
+.formulario-envio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.contacto_info_texto {
-  height: 5em;
+.formulario-envio .conteiner {
+  width: 400px;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 10px;
+}
+.formulario-envio .conteiner-header {
+  border-bottom: 1px solid #f0f0f0;
+}
+.formulario-envio .conteiner-header h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.contacto_info {
+  position: relative;
+}
+.contacto_info label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.contacto_info input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+}
+.contacto_info i {
+  visibility: hidden;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.contacto_info small {
+  visibility: hidden;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.form button {
+  background-color: #000B52;
 }
 
 /*# sourceMappingURL=style.css.map */

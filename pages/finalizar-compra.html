@@ -18,42 +18,63 @@
             </div>
         </nav>
     </header>
-    <h1>Datos de envío</h1>
-    <form action="GET" class="d-flex flex-column align-items-center">
-        <div class="contacto_info">
-            <label class="d-none" for="campo-nombre">Nombre</label>
-            <input type="text" class="form-control" id="campo-nombre" placeholder="Nombre" required>
-        </div>
-        <div class="contacto_info">
-            <label class="d-none" for="campo-apellido">Apellido</label>
-            <input type="text" class="form-control" id="campo-apellido" placeholder="Apellido" required>
-        </div>
-        <div class="contacto_info">
-            <label class="d-none" for="campo-email">Email</label>
-            <input class="form-control" type="email" id="campo-email" placeholder="ejemplo@gmail.com" required>
-        </div>
-        <div class="contacto_info">
-            <label class="d-none" for="campo-tel">Teléfono</label>
-            <input class="form-control" type="tel" id="campo-tel" placeholder="Teléfono" required>
-        </div>
-        <div class="contacto_info">
-            <label class="d-none" for="campo-direccion">Dirección</label>
-            <input class="form-control" type="text" id="campo-direccion" placeholder="Direccion de entrega" required>
-        </div>
+    <main class="formulario-envio">
+        <div class="conteiner">
+            <div class="conteiner-header">
+                <h1>Datos de envío</h1>
+            </div>
+            <form action="GET" class="form" id="form">
+            <div class="contacto_info">
+                <label class="d-none" for="campo-nombre">Nombre</label>
+                <input type="text" class="form-control" id="campo-nombre" placeholder="Nombre" required>
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <i class="bi bi-check-circle-fill"></i>
+                <small>Campo obligatorio</small>
+            </div>
+            <div class="contacto_info">
+                <label class="d-none" for="campo-apellido">Apellido</label>
+                <input type="text" class="form-control" id="campo-apellido" placeholder="Apellido" required>
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <i class="bi bi-check-circle-fill"></i>
+                <small>Campo obligatorio</small>
+            </div>
+            <div class="contacto_info">
+                <label class="d-none" for="campo-email">Email</label>
+                <input class="form-control" type="email" id="campo-email" placeholder="ejemplo@gmail.com" required>
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <i class="bi bi-check-circle-fill"></i>
+                <small>Campo obligatorio</small>
+            </div>
+            <div class="contacto_info">
+                <label class="d-none" for="campo-tel">Teléfono</label>
+                <input class="form-control" type="tel" id="campo-tel" placeholder="Teléfono" required>
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <i class="bi bi-check-circle-fill"></i>
+                <small>Campo obligatorio</small>
+            </div>
+            <div class="contacto_info">
+                <label class="d-none" for="campo-direccion">Dirección</label>
+                <input class="form-control" type="text" id="campo-direccion" placeholder="Direccion de entrega" required>
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <i class="bi bi-check-circle-fill"></i>
+                <small>Campo obligatorio</small>
+            </div>
 
-        <div class="contacto_info">
-            <textarea class="form-control contacto_info_texto" placeholder="observaciones"
-                id="floatingTextarea"></textarea>
-            <label class="d-none" for="floatingTextarea">Escriba un mensaje</label>
+            <div class="contacto_info">
+                <textarea class="form-control contacto_info_texto" placeholder="observaciones"
+                    id="floatingTextarea"></textarea>
+                <label class="d-none" for="floatingTextarea">Escriba un mensaje</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Suscribirse al newsletter
+                </label>
+            </div>
+            <button class="btn shadow boton" type="submit">Enviar Consulta</button>
+            </form>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Suscribirse al newsletter
-            </label>
-        </div>
-        <button class="btn shadow boton" type="submit">Enviar Consulta</button>
-    </form>
+    </main>
     <footer>
         <figure>
             <a href="../index.html"><img class="logo" src="../img/logo-super.png" alt="logo supermercado"></a>
