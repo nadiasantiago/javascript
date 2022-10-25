@@ -74,12 +74,9 @@ function agregarCarrito(e){
     const repeat = carrito.some(elemento=>elemento.id == prodID)
     if (repeat){
         prodCarrito.cantidad ++;
-        // prodCarrito.stock -= prodCarrito.cantidad
     }else{
         carrito.push(prodCarrito);
-        prodCarrito.cantidad ++;
-        // prodCarrito.stock -= prodCarrito.cantidad
-        
+        prodCarrito.cantidad ++;        
     }
     popularCarrito();
 }

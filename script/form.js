@@ -7,10 +7,18 @@ const direccion = document.querySelector("#direccion");
 const observaciones = document.querySelector("#floatingTextarea")
 const btnComprar = document.querySelector("#btn-comprar")
 const datosEnvio = []
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    if(localStorage.getItem('datosEnvio')){
+        carrito = JSON.parse(localStorage.getItem('datosEnvio'));
+        enviarDatos();
+    }
+})
 form.addEventListener("submit", (e)=>{
     e.preventDefault();
     checkInputs();
 })
+btnComprar.addEventListener("click", enviarDatos);
 
 function checkInputs(){
     const nombreValue = nombre.value.trim();
@@ -62,8 +70,6 @@ function successFor(input){
     formControl.className = "contacto_info success";
 }
 
-btnComprar.addEventListener("click", enviarDatos);
-
 function enviarDatos(){
     const nombreValue = nombre.value
     const apellidoValue = apellido.value
@@ -73,4 +79,6 @@ function enviarDatos(){
     const observacionesValue = observaciones.value
     
     datosEnvio.push(nombreValue,apellidoValue,emailValue,telValue,direccionValue,observacionesValue)
+    localStorage.setItem('DatosEnvio', JSON.stringify(datosEnvio));
 }
+
