@@ -11,12 +11,12 @@ class Productos {
 }
 
 /*--------------DECLARACION DE PRODUCTOS---------------*/
-const aceite = new Productos ("item-1","Aceite",420,"./img/aceiteCocinero.jpg",100,0);
-const yerba = new Productos ("item-2","Yerba",360,"./img/yerbaPlayadito.jpg",50,0);
-const arveja = new Productos ("item-3","Arveja",53,"./img/arvejaVigente.jpg",30,0);
-const durazno = new Productos ("item-4","Durazno",350,"./img/duraznoVigente.jpg",60,0);
-const gaseosa = new Productos ("item-5","Gaseosa",390,"./img/gaseosaCoca.jpg",40,0);
-const cerveza = new Productos ("item-6","Cerveza",370,"./img/brahma.jpg",80,0);
+const aceite = new Productos ("item-1","Aceite",420,"./img/aceiteCocinero.jpg",100,1);
+const yerba = new Productos ("item-2","Yerba",360,"./img/yerbaPlayadito.jpg",50,1);
+const arveja = new Productos ("item-3","Arveja",53,"./img/arvejaVigente.jpg",30,1);
+const durazno = new Productos ("item-4","Durazno",350,"./img/duraznoVigente.jpg",60,1);
+const gaseosa = new Productos ("item-5","Gaseosa",390,"./img/gaseosaCoca.jpg",40,1);
+const cerveza = new Productos ("item-6","Cerveza",370,"./img/brahma.jpg",80,1);
 
 const contenedorProductos = document.querySelector(".contenedor");
 
@@ -70,13 +70,15 @@ function agregarCarrito(e){
     boton = e.target;
     let contenedorPadre = boton.parentElement;
     let prodID = contenedorPadre.getAttribute("id");
-    const prodCarrito = listaProductos.find(elemento => elemento.id == prodID);
-    const repeat = carrito.some(elemento=>elemento.id == prodID)
+    const prodEncontrado = listaProductos.find(elemento => elemento.id == prodID);
+    const repeat = carrito.some(elemento=>elemento.id == prodEncontrado.id)
     if (repeat){
+        const prodCarrito = carrito.find(elemento=>elemento.id == prodEncontrado.id);
         prodCarrito.cantidad ++;
+        prodEncontrado.stock --;
     }else{
-        carrito.push(prodCarrito);
-        prodCarrito.cantidad ++;        
+        carrito.push(prodEncontrado);
+        prodEncontrado.stock --;
     }
     popularCarrito();
 }
@@ -127,15 +129,15 @@ function quitarElemento(e){
     let contenedorPadre = boton.parentElement;
     let prodID = contenedorPadre.getAttribute("id");
     const prodCarrito = carrito.find(elemento => elemento.id == prodID);
+    prodCarrito.cantidad = 0;
     let indice = carrito.indexOf(prodCarrito);
     carrito.splice(indice,1);
-    prodCarrito.cantidad = 0;
     popularCarrito();
 }
 
 function vaciarCarrito(){
+    carrito.forEach(producto=>producto.cantidad = 0);
     carrito = [];
-    listaProductos.forEach(producto=>producto.cantidad = 0);
     popularCarrito();
 }
 
@@ -146,6 +148,7 @@ function updateValue(e){
     const prodCarrito = carrito.find(elemento => elemento.id == prodID);
     const prodLista = listaProductos.find(elemento => elemento.id == prodID)
     prodCarrito.cantidad = parseFloat(boton.value);
-    prodLista.cantidad = prodCarrito.cantidad;
+    prodLista.stock --;
+    console.log(prodLista.stock)
     popularCarrito();
 }
