@@ -45,6 +45,23 @@
         }
     }
 }
+.container-buscador{
+    input{
+        border: 2px solid #f0f0f0;
+        border-radius: 4px;
+        display: block;
+        padding: 5px;
+        width: 25em;
+        height: 35px;
+    }
+    i{
+        color: grey;
+        position: relative;
+        left: 23em;
+        top: -30px;
+    }
+}
+
 
 .titulo{
     text-align: center;
