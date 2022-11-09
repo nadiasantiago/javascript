@@ -1,0 +1,8 @@
+[
+    {"id":"item-1", "nombre":"Aceite", "precio":420, "img":"./img/aceiteCocinero.jpg", "stock":100, "cantidad":1},
+    {"id":"item-2", "nombre":"Yerba", "precio":360, "img":"./img/yerbaPlayadito.jpg", "stock":50, "cantidad":1},
+    {"id":"item-3", "nombre":"Arveja", "precio":53, "img":"./img/arvejaVigente.jpg", "stock":30, "cantidad":1},
+    {"id":"item-4", "nombre":"Durazno", "precio":350, "img":"./img/duraznoVigente.jpg", "stock":60, "cantidad":1},
+    {"id":"item-5", "nombre":"Gaseosa", "precio":390, "img":"./img/gaseosaCoca.jpg", "stock":40, "cantidad":1},
+    {"id":"item-6", "nombre":"Cerveza", "precio":370, "img":"./img/brahma.jpg", "stock":80, "cantidad":1}
+]
