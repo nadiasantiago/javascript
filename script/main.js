@@ -20,27 +20,37 @@ const cerveza = new Productos ("item-6","Cerveza",370,"./img/brahma.jpg",80,1);
 
 const contenedorProductos = document.querySelector(".contenedor");
 
-let listaProductos = [aceite,yerba,arveja,durazno,gaseosa,cerveza];
+let listaProductos=[]
 let carrito = [];
+const obtenerProductos = ()=>{
+    fetch("./script/productos.json")
+        .then(response => response.json())
+        .then(result => {
+            const productos = result
+            listaProductos.push(productos);
+            console.log(listaProductos)
+            productos.forEach(producto =>{
+                contenedorProductos.innerHTML +=`
+                    <div class="contenedor-productos" id="${producto.id}">
+                        <img src="${producto.img}" class="product-img" alt="${producto.nombre}">
+                        <div class="contenedor-productos-descripcion">
+                            <h2>${producto.nombre}</h2>
+                            <span class="product-price">$${producto.precio}</span>
+                        </div>
+                        <button class="add-to-cart">Comprar</button>
+                    </div>
+                `
+            })            
+        })
+}
+
+obtenerProductos();
 
 document.addEventListener('DOMContentLoaded', ()=>{
     if(localStorage.getItem('carrito')){
         carrito = JSON.parse(localStorage.getItem('carrito'));
         popularCarrito();
     }
-})
-
-listaProductos.forEach(producto =>{
-    contenedorProductos.innerHTML +=`
-        <div class="contenedor-productos" id="${producto.id}">
-            <img src="${producto.img}" class="product-img" alt="${producto.nombre}">
-            <div class="contenedor-productos-descripcion">
-                <h2>${producto.nombre}</h2>
-                <span class="product-price">$${producto.precio}</span>
-            </div>
-            <button class="add-to-cart">Comprar</button>
-        </div>
-    `
 })
 
 const botonesComprar = document.querySelectorAll(".add-to-cart");
@@ -146,9 +156,45 @@ function updateValue(e){
     let contenedorPadre = boton.parentElement;
     let prodID = contenedorPadre.getAttribute("id");
     const prodCarrito = carrito.find(elemento => elemento.id == prodID);
-    const prodLista = listaProductos.find(elemento => elemento.id == prodID)
+    const prodLista = listaProductos.find(elemento => elemento.id == prodID);
     prodCarrito.cantidad = parseFloat(boton.value);
     prodLista.stock --;
     console.log(prodLista.stock)
     popularCarrito();
 }
+
+/*--------------BUSQUEDA DE PRODUCTOS---------------*/
+const buscador = document.querySelector('#buscar');
+const btnBuscador = document.querySelector('.bi-search');
+const respuestaBusqueda = document.querySelector('#busqueda');
+
+const buscar = ()=>{
+    respuestaBusqueda.innerHTML = '';
+    let productoBuscado = buscador.value.toLowerCase();
+    for(producto of listaProductos){
+        let nombre = producto.nombre.toLowerCase();
+        if(nombre.indexOf(productoBuscado) !== -1){
+            respuestaBusqueda.className = "buscando"
+            respuestaBusqueda.innerHTML += `
+            <div class='product-row' id='${producto.id}'>
+                <img src='${producto.img}' class='cart-image' />
+                <span class='cart-product'>${producto.nombre}</span>
+                <span class='cart-price'>$${producto.precio}</span>
+            </div>`
+        }
+    }
+    if(respuestaBusqueda.innerHTML === ''){
+        respuestaBusqueda.innerHTML +=`
+        <div class='product-row'>
+            <span>No hay resultados!!</span>
+        </div>`
+    }
+    if (productoBuscado==""){
+        respuestaBusqueda.className='busqueda-oculta';
+    }
+}
+
+btnBuscador.addEventListener('click',buscar)
+buscador.addEventListener('keyup', buscar)
+
+

@@ -47,19 +47,46 @@
 }
 .container-buscador{
     input{
-        border: 2px solid #f0f0f0;
         border-radius: 4px;
         display: block;
         padding: 5px;
-        width: 25em;
+        width: 20em;
         height: 35px;
     }
     i{
         color: grey;
         position: relative;
-        left: 23em;
+        left: 18.5em;
         top: -30px;
     }
+    .buscando{
+        position: absolute;
+        background-color: #ffff;
+        top: 74px;
+        left: 400px;
+        padding: 10px;
+        z-index: 1000;
+        max-height: 350px;
+        width: 500px;
+        overflow-y: auto
+    }
+    .busqueda-oculta{
+        position: absolute;
+        background-color: #ffff;
+        top: -500px;
+        left: 400px;
+        padding: 10px;
+        z-index: 1000;
+        max-height: 350px;
+        width: 500px;
+        overflow-y: auto
+    }
+}
+.desactivado{
+    display: none;
+}
+.mostrar-datos{
+    display: flex;
 }
 
 

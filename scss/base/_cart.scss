@@ -5,6 +5,10 @@
     float: right;
     overflow: scroll;
     overflow-x: hidden;
+    margin-right: 1.5em;
+    padding-left: 1em;
+    padding-right: 0.5em;
+
     &-overlay {
         position: fixed;
         width: 100vw;
@@ -19,7 +23,7 @@
     #close-btn{
         font-size: 2rem;
         float: right;
-        margin: 0.7em 1.5em 0 0;
+        margin: 1em 0.2em 0 0;
         color: white;
         cursor: pointer;
     }
@@ -57,6 +61,7 @@
     margin-top: 0.3em;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .cart-image{
     width: 5em;
@@ -74,11 +79,13 @@
     background: 0;
 }
 .cart-price{
-    width: 3em;
+    width: 3.5em;
     padding: 0.3em;
+    text-align: center;
 }
 .product-quantity{
     width: 3em;
+    text-align: center;
 }
 
 .purchase-btn {

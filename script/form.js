@@ -4,20 +4,21 @@ const apellido = document.querySelector("#apellido");
 const email = document.querySelector("#email");
 const tel = document.querySelector("#tel");
 const direccion = document.querySelector("#direccion");
-const observaciones = document.querySelector("#floatingTextarea")
-const btnComprar = document.querySelector("#btn-comprar")
-const datosContainer = document.querySelector('.datos-container')
-const productCarrito = document.querySelector('.productos-carrito')
+const observaciones = document.querySelector("#floatingTextarea");
+const btnComprar = document.querySelector("#btn-comprar");
+const datosContainer = document.querySelector('.datos-container');
+const productCarrito = document.querySelector('.productos-carrito');
+const totalCompra = document.querySelector('.total-compra')
 let datosEnvio = []
 let validar = 0
 
 btnComprar.addEventListener("click", (e)=>{
-    // e.preventDefault();
+    e.preventDefault();
     checkInputs();
     if(validar==5){
         enviarDatos();
         formReset();
-        // mostrarDatos();
+        mostrarDatos();
         mostrarProductos()
     }else{
         validar=0;
@@ -55,27 +56,28 @@ function checkInputs(){
 function enviarDatos(){//manda los datos al localstorage
     datosEnvio.push(nombre.value, apellido.value, email.value, tel.value, direccion.value, observaciones.value)
     localStorage.setItem('datosEnvio', JSON.stringify(datosEnvio));
+    form.classList.add("desactivado");
 }
 
-// function mostrarDatos(){//muestra los datos de envío para que el usuario lo confirme
-//     datosEnviados = JSON.parse(localStorage.getItem('datosEnvio'));
-//     datosContainer.innerHTML =
-//     `<p>Nombre: ${datosEnviados[0]}</p>
-//     <p>Apellido: ${datosEnviados[1]}</p>
-//     <p>Email: ${datosEnviados[2]}</p>
-//     <p>Telefono: ${datosEnviados[3]}</p>
-//     <p>Direccion ${datosEnviados[4]}</p>
-//     <p>Observaciones: ${datosEnviados[5]}</p>`
-// }
+function mostrarDatos(){//muestra los datos de envío para que el usuario lo confirme
+    datosEnviados = JSON.parse(localStorage.getItem('datosEnvio'));
+    datosContainer.innerHTML =
+    `<p>Nombre: ${datosEnviados[0]}</p>
+    <p>Apellido: ${datosEnviados[1]}</p>
+    <p>Email: ${datosEnviados[2]}</p>
+    <p>Telefono: ${datosEnviados[3]}</p>
+    <p>Direccion ${datosEnviados[4]}</p>
+    <p>Observaciones: ${datosEnviados[5]}</p>`
+}
 
 function mostrarProductos(){//muestra los productos que se confirmaron
     const productos = JSON.parse(localStorage.getItem('carrito'));
     productCarrito.innerHTML += `
             <div class='product-row'>
-                <span class='cart-product'>Producto</span>
-                <span class='cart-price'>Precio</span>
-                <span class="product-quantity">Cantidad</span>
-                <span class='cart-price'>Total</span>
+                <span class='title-producto'>Producto</span>
+                <span class='title'>Precio</span>
+                <span class="title">Cant.</span>
+                <span class='title'>Total</span>
             <div>`
     productos.forEach(producto => {
         productCarrito.innerHTML += `
@@ -85,9 +87,15 @@ function mostrarProductos(){//muestra los productos que se confirmaron
                 <span class='cart-price'>$${producto.precio}</span>
                 <span class="product-quantity">${producto.cantidad}</span>
                 <span class='cart-price'>$${producto.precio * producto.cantidad}</span>
-                <button class="btn-remove bi bi-trash3"></button>
             </div>`
     })
+    total();
+}
+function total(){
+    let total = carrito.reduce((acc, producto)=>{ 
+        return acc + ((producto.precio)*(producto.cantidad))
+    },0)
+    totalCompra.innerHTML = `Total $${total}`
 }
 
 
