@@ -8,7 +8,10 @@ const observaciones = document.querySelector("#floatingTextarea");
 const btnComprar = document.querySelector("#btn-comprar");
 const datosContainer = document.querySelector('.datos-container');
 const productCarrito = document.querySelector('.productos-carrito');
-const totalCompra = document.querySelector('.total-compra')
+const totalCompra = document.querySelector('.total-compra');
+const modificarProductos = document.querySelector('.modificar-productos');
+const finalizarCompra = document.querySelector('.finalizar-compra');
+
 let datosEnvio = []
 let validar = 0
 
@@ -29,7 +32,7 @@ function errorFor(input, mensaje){
     const formControl = input.parentElement;
     const small = formControl.querySelector("small");
     small.innerText = mensaje;
-    formControl.className = "form-control contacto_info error"
+    formControl.className = "contacto_info error"
 }
 
 function successFor(input){
@@ -62,12 +65,17 @@ function enviarDatos(){//manda los datos al localstorage
 function mostrarDatos(){//muestra los datos de envío para que el usuario lo confirme
     datosEnviados = JSON.parse(localStorage.getItem('datosEnvio'));
     datosContainer.innerHTML =
-    `<p>Nombre: ${datosEnviados[0]}</p>
-    <p>Apellido: ${datosEnviados[1]}</p>
-    <p>Email: ${datosEnviados[2]}</p>
-    <p>Telefono: ${datosEnviados[3]}</p>
-    <p>Direccion ${datosEnviados[4]}</p>
-    <p>Observaciones: ${datosEnviados[5]}</p>`
+    `<div class='datos'>
+        <p>Nombre: ${datosEnviados[0]}</p>
+        <p>Apellido: ${datosEnviados[1]}</p>
+        <p>Email: ${datosEnviados[2]}</p>
+        <p>Telefono: ${datosEnviados[3]}</p>
+        <p>Direccion ${datosEnviados[4]}</p>
+        <p>Observaciones: ${datosEnviados[5]}</p>
+    </div>
+    <div>
+    <a href="./finalizar-compra.html"><p class="modificar" id="modificar-datos">Modificar<p>
+    </div>`
 }
 
 function mostrarProductos(){//muestra los productos que se confirmaron
@@ -89,17 +97,26 @@ function mostrarProductos(){//muestra los productos que se confirmaron
                 <span class='cart-price'>$${producto.precio * producto.cantidad}</span>
             </div>`
     })
-    total();
-}
-function total(){
-    let total = carrito.reduce((acc, producto)=>{ 
+    let total = productos.reduce((acc, producto)=>{ 
         return acc + ((producto.precio)*(producto.cantidad))
     },0)
     totalCompra.innerHTML = `Total $${total}`
-}
+    modificarProductos.innerHTML=`<a href="../index.html"><p class="modificar" id="modificar-productos">Modificar</p></a>`
+    finalizarCompra.innerHTML = `<button class="btn" id="btn-finalizar">Finalizar Compra</button>`
+    const btnFinalizar = document.querySelector('#btn-finalizar');
+    btnFinalizar?.addEventListener('click',()=>{
+        Swal.fire({
+            icon: 'success',
+            title: 'Pedido realizado con éxito!',
+            text: 'Muchas gracias por su compra!'
+        })
+    })
 
+}
 
 function formReset() {
     form.reset();
     validar = 0;
 }
+
+

@@ -1,35 +1,13 @@
-/*--------------DECLARACION DE PRODUCTOS---------------*/
-class Productos {
-    constructor (id, nombre, precio, img, stock, cantidad){
-        this.id=id;
-        this.nombre=nombre;
-        this.precio=precio;
-        this.img=img;
-        this.stock=stock;
-        this.cantidad=cantidad;
-    }
-}
-
-/*--------------DECLARACION DE PRODUCTOS---------------*/
-const aceite = new Productos ("item-1","Aceite",420,"./img/aceiteCocinero.jpg",100,1);
-const yerba = new Productos ("item-2","Yerba",360,"./img/yerbaPlayadito.jpg",50,1);
-const arveja = new Productos ("item-3","Arveja",53,"./img/arvejaVigente.jpg",30,1);
-const durazno = new Productos ("item-4","Durazno",350,"./img/duraznoVigente.jpg",60,1);
-const gaseosa = new Productos ("item-5","Gaseosa",390,"./img/gaseosaCoca.jpg",40,1);
-const cerveza = new Productos ("item-6","Cerveza",370,"./img/brahma.jpg",80,1);
-
+let listaProductos = [];
 const contenedorProductos = document.querySelector(".contenedor");
 
-let listaProductos=[]
-let carrito = [];
+
 const obtenerProductos = ()=>{
     fetch("./script/productos.json")
         .then(response => response.json())
         .then(result => {
-            const productos = result
-            listaProductos.push(productos);
-            console.log(listaProductos)
-            productos.forEach(producto =>{
+            listaProductos = result;
+            listaProductos.forEach(producto =>{
                 contenedorProductos.innerHTML +=`
                     <div class="contenedor-productos" id="${producto.id}">
                         <img src="${producto.img}" class="product-img" alt="${producto.nombre}">
@@ -37,14 +15,17 @@ const obtenerProductos = ()=>{
                             <h2>${producto.nombre}</h2>
                             <span class="product-price">$${producto.precio}</span>
                         </div>
-                        <button class="add-to-cart">Comprar</button>
-                    </div>
-                `
-            })            
+                        <button class="add-to-cart" >Comprar</button>
+                    </div>`
+            })
+            const botonesComprar = document.querySelectorAll(".add-to-cart");
+            botonesComprar.forEach(boton => {
+                boton.addEventListener("click", agregarCarrito);
+            });
         })
 }
-
 obtenerProductos();
+let carrito = [];
 
 document.addEventListener('DOMContentLoaded', ()=>{
     if(localStorage.getItem('carrito')){
@@ -53,7 +34,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 })
 
-const botonesComprar = document.querySelectorAll(".add-to-cart");
+listaProductos.forEach(producto =>{
+    contenedorProductos.innerHTML +=`
+        <div class="contenedor-productos" id="${producto.id}">
+            <img src="${producto.img}" class="product-img" alt="${producto.nombre}">
+            <div class="contenedor-productos-descripcion">
+                <h2>${producto.nombre}</h2>
+                <span class="product-price">$${producto.precio}</span>
+            </div>
+            <button class="add-to-cart">Comprar</button>
+        </div>
+    `
+})
+
 const btnCarrito = document.querySelector("#cart");
 const ventanaCarrito = document.querySelector(".cart-modal-overlay");
 const cerrarCarrito = document.querySelector("#close-btn");
@@ -68,10 +61,6 @@ btnCarrito.addEventListener("click",()=>{
 
 cerrarCarrito.addEventListener("click",()=>{
     ventanaCarrito.classList.remove("open");
-});
-
-botonesComprar.forEach(boton => {
-    boton.addEventListener("click", agregarCarrito);
 });
 
 btnVaciarCarrito.addEventListener("click",vaciarCarrito);
@@ -120,8 +109,6 @@ function popularCarrito(){
 
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
-
-
 
 function actualizarTotal(){
     let total = carrito.reduce((acc, producto)=>{ 

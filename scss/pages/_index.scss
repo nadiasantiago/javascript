@@ -85,13 +85,17 @@
 .desactivado{
     display: none;
 }
-.mostrar-datos{
-    display: flex;
-}
 
+.lista-carrito{
+    max-height: 400px;
+    overflow-y: auto
+}
 
 .titulo{
     text-align: center;
     margin: 0;
     padding-top: 10px;
+}
+.total{
+    margin: 5px;
 }

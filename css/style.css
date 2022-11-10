@@ -281,14 +281,19 @@ footer p {
   display: none;
 }
 
-.mostrar-datos {
-  display: flex;
+.lista-carrito {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .titulo {
   text-align: center;
   margin: 0;
   padding-top: 10px;
+}
+
+.total {
+  margin: 5px;
 }
 
 .formulario-envio {
@@ -324,12 +329,13 @@ footer p {
   display: block;
   width: 100%;
   height: 35px;
+  padding: 5px;
 }
 .contacto_info i {
   visibility: hidden;
   position: absolute;
-  top: 6px;
-  right: 10px;
+  top: 7px;
+  right: 12px;
 }
 .contacto_info small {
   visibility: hidden;
@@ -358,7 +364,7 @@ footer p {
   visibility: visible;
 }
 
-.form button {
+#btn-comprar, #btn-finalizar {
   background-color: #000B52;
   border: 2px solid #000B52;
   color: #fff;
@@ -368,11 +374,42 @@ footer p {
   width: 100%;
 }
 
+#btn-finalizar {
+  width: 25em;
+  margin-bottom: 10px;
+}
+
 .title {
   padding: 0.3em 0.55em;
 }
 .title-producto {
   padding: 0.3em 2.5em;
+}
+
+.total-compra {
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.modificar {
+  text-decoration: underline;
+  color: blue;
+}
+
+#modificar-datos {
+  size: 200px;
+}
+
+#modificar-productos {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.datos {
+  padding-right: 100px;
+  border-bottom: 2px solid black;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -21,7 +21,7 @@
     <main class="formulario-envio">
         <div class="conteiner">
             <div class="conteiner-header">
-                <h1>Datos de envío</h1>
+                <h1 class="text-center">Datos de envío</h1>
             </div>
             <form class="form" id="form">
                 <div class="contacto_info">
@@ -65,18 +65,26 @@
                         id="floatingTextarea"></textarea>
                     <label class="d-none" for="floatingTextarea">Escriba un mensaje</label>
                 </div>
-                <button class="btn" id="btn-comprar" type="submit">Comprar</button>
+                <button class="btn" id="btn-comprar">Enviar Datos</button>
             </form>
         </div>
         <div class="mostrar-datos">
-            <div class="datos-container">
+            <div class="datos-container d-flex">
             </div>
-            <div>
-                <div class="productos-carrito">
+            <div class="d-flex">
+                <div>
+                    <div class="productos-carrito">
+                    </div>
+                    <div class="total-compra">
+                    </div>
+                </div> 
+                <div class="modificar-productos">
+
                 </div>
-                <div class="total-compra">
-                </div>
-            </div>    
+            </div>
+        </div>
+        <div class="finalizar-compra">
+
         </div>
     </main>
     <footer>
@@ -105,6 +113,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../script/form.js"></script>
 </body>
 </html>
