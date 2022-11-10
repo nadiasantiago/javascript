@@ -1,7 +1,6 @@
 let listaProductos = [];
 const contenedorProductos = document.querySelector(".contenedor");
 
-
 const obtenerProductos = ()=>{
     fetch("./script/productos.json")
         .then(response => response.json())
@@ -171,17 +170,18 @@ const buscar = ()=>{
         }
     }
     if(respuestaBusqueda.innerHTML === ''){
+        respuestaBusqueda.className='buscando';
         respuestaBusqueda.innerHTML +=`
         <div class='product-row'>
             <span>No hay resultados!!</span>
         </div>`
-    }
-    if (productoBuscado==""){
+    }else if (productoBuscado==""){
         respuestaBusqueda.className='busqueda-oculta';
     }
 }
 
 btnBuscador.addEventListener('click',buscar)
 buscador.addEventListener('keyup', buscar)
+
 
 

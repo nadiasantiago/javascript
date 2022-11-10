@@ -105,11 +105,7 @@ function mostrarProductos(){//muestra los productos que se confirmaron
     finalizarCompra.innerHTML = `<button class="btn" id="btn-finalizar">Finalizar Compra</button>`
     const btnFinalizar = document.querySelector('#btn-finalizar');
     btnFinalizar?.addEventListener('click',()=>{
-        Swal.fire({
-            icon: 'success',
-            title: 'Pedido realizado con éxito!',
-            text: 'Muchas gracias por su compra!'
-        })
+        compraExitosa();
     })
 
 }
@@ -117,6 +113,19 @@ function mostrarProductos(){//muestra los productos que se confirmaron
 function formReset() {
     form.reset();
     validar = 0;
+}
+
+function compraExitosa (){
+    Swal.fire({
+        icon: 'success',
+        title: 'Pedido realizado con éxito!',
+        text: 'Muchas gracias por su compra!',
+        timer: 3000
+    }).then(()=>{
+        location.href="/ecommerce-santiago/index.html"
+        carrito=[]
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    })
 }
 
 
