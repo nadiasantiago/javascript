@@ -202,17 +202,24 @@ function mostrarProductosBuscados (){
                 </div>`
             mostrarTodo.innerHTML = `
             <p>Resultados para: <strong>${productoBuscado}</strong></p>
-            <a href="./index.html"><p class='mostrar-todo'>Mostrar todos los productos</p></a>`
+            <a href="./index.html"><p class='mostrar-todo'>Quitar filtro</p></a>`
         }
     }
 }
 
+
+
 // buscador.addEventListener('keyup', buscar);
 buscador.addEventListener("keyup", function(event) {
     buscar()
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 || event==='click') {
         mostrarProductosBuscados()
     }
+
 });
+
+btnBuscador.addEventListener("click", console.log("hola"))
+console.log(btnBuscador)
+
 
 
