@@ -53,11 +53,15 @@
         width: 20em;
         height: 35px;
     }
-    i{
-        color: grey;
+    .btn-busqueda{
+        background-color: white;
         position: relative;
         left: 18.5em;
         top: -30px;
+        border: 0;
+        i{
+            color: grey;
+        }
     }
     .buscando{
         position: absolute;
@@ -98,4 +102,13 @@
 }
 .total{
     margin: 5px;
+}
+
+.mostrar-todo{
+    text-decoration: underline;
+    color: blue;
+}
+.contenedor-buscados{
+    padding-left: 2em;
+    padding-right: 2em;
 }

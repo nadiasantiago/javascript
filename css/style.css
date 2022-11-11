@@ -248,11 +248,15 @@ footer p {
   width: 20em;
   height: 35px;
 }
-.container-buscador i {
-  color: grey;
+.container-buscador .btn-busqueda {
+  background-color: white;
   position: relative;
   left: 18.5em;
   top: -30px;
+  border: 0;
+}
+.container-buscador .btn-busqueda i {
+  color: grey;
 }
 .container-buscador .buscando {
   position: absolute;
@@ -294,6 +298,16 @@ footer p {
 
 .total {
   margin: 5px;
+}
+
+.mostrar-todo {
+  text-decoration: underline;
+  color: blue;
+}
+
+.contenedor-buscados {
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 .formulario-envio {

@@ -56,7 +56,9 @@ const btnVaciarCarrito = document.querySelector(".vaciar-carrito");
 
 btnCarrito.addEventListener("click",()=>{
     ventanaCarrito.classList.add("open");
-});
+})
+
+
 
 cerrarCarrito.addEventListener("click",()=>{
     ventanaCarrito.classList.remove("open");
@@ -103,9 +105,8 @@ function popularCarrito(){
     });
     const cantidadProducto = document.querySelectorAll(".product-quantity");
     cantidadProducto.forEach(boton => {
-    boton.addEventListener("change", updateValue);
-});
-
+        boton.addEventListener("change", updateValue);
+    });
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
@@ -151,8 +152,9 @@ function updateValue(e){
 
 /*--------------BUSQUEDA DE PRODUCTOS---------------*/
 const buscador = document.querySelector('#buscar');
-const btnBuscador = document.querySelector('.bi-search');
+const btnBuscador = document.querySelector('.btn-busqueda');
 const respuestaBusqueda = document.querySelector('#busqueda');
+const mostrarTodo = document.querySelector('.contenedor-buscados')
 
 const buscar = ()=>{
     respuestaBusqueda.innerHTML = '';
@@ -175,13 +177,42 @@ const buscar = ()=>{
         <div class='product-row'>
             <span>No hay resultados!!</span>
         </div>`
-    }else if (productoBuscado==""){
+    }
+    if (productoBuscado==""){
         respuestaBusqueda.className='busqueda-oculta';
     }
 }
 
-btnBuscador.addEventListener('click',buscar)
-buscador.addEventListener('keyup', buscar)
+function mostrarProductosBuscados (){
+    contenedorProductos.innerHTML =''
+    let productoBuscado = buscador.value.toLowerCase();
+    console.log(productoBuscado)
+    for(producto of listaProductos){
+        let nombre = producto.nombre.toLowerCase();
+        if(nombre.indexOf(productoBuscado) !== -1){
+            respuestaBusqueda.className = "busqueda-oculta"
+            contenedorProductos.innerHTML +=`
+                <div class="contenedor-productos" id="${producto.id}">
+                    <img src="${producto.img}" class="product-img" alt="${producto.nombre}">
+                    <div class="contenedor-productos-descripcion">
+                        <h2>${producto.nombre}</h2>
+                        <span class="product-price">$${producto.precio}</span>
+                    </div>
+                    <button class="add-to-cart">Comprar</button>
+                </div>`
+            mostrarTodo.innerHTML = `
+            <p>Resultados para: <strong>${productoBuscado}</strong></p>
+            <a href="./index.html"><p class='mostrar-todo'>Mostrar todos los productos</p></a>`
+        }
+    }
+}
 
+// buscador.addEventListener('keyup', buscar);
+buscador.addEventListener("keyup", function(event) {
+    buscar()
+    if (event.keyCode === 13) {
+        mostrarProductosBuscados()
+    }
+});
 
 
