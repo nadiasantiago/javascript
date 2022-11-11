@@ -218,8 +218,9 @@ buscador.addEventListener("keyup", function(event) {
 
 });
 
-btnBuscador.addEventListener("click", console.log("hola"))
 console.log(btnBuscador)
+btnBuscador.addEventListener("click", console.log("hola"))
+
 
 
 
