@@ -4,6 +4,7 @@ const apellido = document.querySelector("#apellido");
 const email = document.querySelector("#email");
 const tel = document.querySelector("#tel");
 const direccion = document.querySelector("#direccion");
+const medioDePago = document.querySelector('#medioDePago')
 const observaciones = document.querySelector("#floatingTextarea");
 const btnComprar = document.querySelector("#btn-comprar");
 const datosContainer = document.querySelector('.datos-container');
@@ -57,7 +58,7 @@ function checkInputs(){
 }
 
 function enviarDatos(){//manda los datos al localstorage
-    datosEnvio.push(nombre.value, apellido.value, email.value, tel.value, direccion.value, observaciones.value)
+    datosEnvio.push(nombre.value, apellido.value, email.value, tel.value, direccion.value, medioDePago.value, observaciones.value)
     localStorage.setItem('datosEnvio', JSON.stringify(datosEnvio));
     form.classList.add("desactivado");
 }
@@ -71,7 +72,8 @@ function mostrarDatos(){//muestra los datos de envío para que el usuario lo con
         <p>Email: ${datosEnviados[2]}</p>
         <p>Telefono: ${datosEnviados[3]}</p>
         <p>Direccion ${datosEnviados[4]}</p>
-        <p>Observaciones: ${datosEnviados[5]}</p>
+        <p>Medio de Pago: ${datosEnviados[5]}</p>
+        <p>Observaciones: ${datosEnviados[6]}</p>
     </div>
     <div>
     <a href="./finalizar-compra.html"><p class="modificar" id="modificar-datos">Modificar<p>
@@ -120,7 +122,7 @@ function compraExitosa (){
         icon: 'success',
         title: 'Pedido realizado con éxito!',
         text: 'Muchas gracias por su compra!',
-        timer: 3000
+        timer: 1500
     }).then(()=>{
         location.href="/ecommerce-santiago/index.html"
         carrito=[]

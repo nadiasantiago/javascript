@@ -249,7 +249,6 @@ footer p {
   height: 35px;
 }
 .container-buscador .btn-busqueda {
-  z-index: 1000;
   background-color: white;
   position: relative;
   left: 18.5em;

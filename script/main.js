@@ -1,6 +1,7 @@
 let listaProductos = [];
 const contenedorProductos = document.querySelector(".contenedor");
 
+
 const obtenerProductos = ()=>{
     fetch("./script/productos.json")
         .then(response => response.json())
@@ -155,10 +156,11 @@ const buscador = document.querySelector('#buscar');
 const btnBuscador = document.querySelector('.btn-busqueda');
 const respuestaBusqueda = document.querySelector('#busqueda');
 const mostrarTodo = document.querySelector('.contenedor-buscados')
+let productoBuscado = buscador.value.toLowerCase();
 
 const buscar = ()=>{
     respuestaBusqueda.innerHTML = '';
-    let productoBuscado = buscador.value.toLowerCase();
+    productoBuscado = buscador.value.toLowerCase();
     for(producto of listaProductos){
         let nombre = producto.nombre.toLowerCase();
         if(nombre.indexOf(productoBuscado) !== -1){
@@ -185,8 +187,7 @@ const buscar = ()=>{
 
 function mostrarProductosBuscados (){
     contenedorProductos.innerHTML =''
-    let productoBuscado = buscador.value.toLowerCase();
-    console.log(productoBuscado)
+    productoBuscado = buscador.value.toLowerCase();
     for(producto of listaProductos){
         let nombre = producto.nombre.toLowerCase();
         if(nombre.indexOf(productoBuscado) !== -1){
@@ -205,21 +206,26 @@ function mostrarProductosBuscados (){
             <a href="./index.html"><p class='mostrar-todo'>Quitar filtro</p></a>`
         }
     }
+    const botonesComprar = document.querySelectorAll(".add-to-cart");
+    botonesComprar.forEach(boton => {
+        boton.addEventListener("click", agregarCarrito);
+    });
 }
 
-
-
-// buscador.addEventListener('keyup', buscar);
 buscador.addEventListener("keyup", function(event) {
     buscar()
-    if (event.keyCode === 13 || event==='click') {
-        mostrarProductosBuscados()
+    if (event.keyCode === 13 && productoBuscado !== '') {
+        mostrarProductosBuscados();
     }
-
 });
 
-console.log(btnBuscador)
-btnBuscador.addEventListener("click", console.log("hola"))
+btnBuscador.addEventListener("click", ()=>{
+    buscar();
+    if(productoBuscado !== ''){
+        mostrarProductosBuscados();
+    }
+})
+
 
 
 
